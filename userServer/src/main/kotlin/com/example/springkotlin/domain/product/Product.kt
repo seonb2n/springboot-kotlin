@@ -16,5 +16,4 @@ class Product (
     @JoinColumn(name = "userId")
     var user: User
     ) : BaseEntity() {
-
 }

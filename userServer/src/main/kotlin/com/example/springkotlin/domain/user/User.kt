@@ -11,8 +11,12 @@ class User (
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val userId: Long? = null,
     var nickName: String,
+    var credit: Int,
     @OneToMany(mappedBy = "user")
-    var productList: MutableSet<Product> = TreeSet()
+    var productSet: MutableSet<Product> = TreeSet()
     ) : BaseEntity() {
 
+        fun addProduct(product: Product) {
+            productSet.add(product)
+        }
 }
