@@ -10,11 +10,12 @@ class UserCommand {
         val userNickName: String,
         val userCredit: Int
     ) {
-        private fun toEntity(registerUser: RegisterUser): User {
+        fun toEntity(): User {
             return User(
                 nickName = userNickName,
                 credit = userCredit
             )
         }
+
     }
 }

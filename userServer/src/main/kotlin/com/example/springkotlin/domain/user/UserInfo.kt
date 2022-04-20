@@ -8,19 +8,10 @@ import com.example.springkotlin.domain.product.Product
 
 class UserInfo {
 
-    class Main(
-        var userId: Long?,
-        var userNickName: String,
-        var userCredit: Int,
-        var userProductSet: MutableSet<Product>
-    ) {
-        fun toMain(user: User) :Main {
-            return Main(
-                userId = user.userId,
-                userNickName = user.nickName,
-                userCredit = user.credit,
-                userProductSet = user.productSet
-            )
-        }
+    class Main(user: User) {
+        val userId: Long? = user.userId
+        val userNickName: String = user.nickName
+        val userCredit: Int = user.credit
+        val userProductSet: MutableSet<Product> = user.productSet
     }
 }
