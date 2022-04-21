@@ -28,7 +28,7 @@ class CommonControllerAdvice {
     @ResponseBody
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(value = [Exception::class])
-    fun onException(e: Exception?): CommonResponse<*> {
+    fun onException(e: Exception?): CommonResponse<Any> {
         return CommonResponse.fail(ErrorCode.COMMON_SYSTEM_ERROR)
     }
 
@@ -42,7 +42,7 @@ class CommonControllerAdvice {
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     @ExceptionHandler(value = [BaseException::class])
-    fun onBaseException(e: BaseException): CommonResponse<*> {
+    fun onBaseException(e: BaseException): CommonResponse<Any> {
         return CommonResponse.fail(e.message, e.errorCode?.name)
     }
 
@@ -56,7 +56,7 @@ class CommonControllerAdvice {
     @ResponseBody
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(value = [MethodArgumentNotValidException::class])
-    fun methodArgumentNotValidException(e: MethodArgumentNotValidException): CommonResponse<*> {
+    fun methodArgumentNotValidException(e: MethodArgumentNotValidException): CommonResponse<Any> {
         val bindingResult = e.bindingResult
         val fe = bindingResult.fieldError
         return if (fe != null) {
