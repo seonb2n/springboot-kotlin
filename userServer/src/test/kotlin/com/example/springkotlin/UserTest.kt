@@ -36,6 +36,6 @@ class UserTest {
 
         val user2 = userId?.let { userService.getUserWithUserId(it) }
 
-        println(user2?.userNickName)
+        Assertions.assertEquals(user.userNickName, user2?.userNickName)
     }
 }

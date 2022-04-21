@@ -1,6 +1,5 @@
 package com.example.springkotlin.infrastructure.user
 
-import com.example.springkotlin.common.exception.BaseException
 import com.example.springkotlin.domain.user.User
 import com.example.springkotlin.domain.user.service.UserReader
 import org.springframework.beans.factory.annotation.Autowired

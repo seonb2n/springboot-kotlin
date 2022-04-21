@@ -1,17 +1,21 @@
 package com.example.springkotlin.common.exception
 
-import lombok.extern.slf4j.Slf4j
-import org.slf4j.LoggerFactory
-import org.springframework.stereotype.Component
+import java.lang.RuntimeException
+import com.example.springkotlin.common.response.ErrorCode
 
-@Slf4j
-@Component
-class BaseException: RuntimeException() {
+class BaseException : RuntimeException {
+    var errorCode: ErrorCode? = null
 
-    private val log = LoggerFactory.getLogger(javaClass)
-
-    fun entityNotFound(message: String) {
-        log.info("$message 를 가진 사용자는 없습니다.")
+    constructor() {}
+    constructor(errorCode: ErrorCode) : super(errorCode.getErrorMsg()) {
+        this.errorCode = errorCode
     }
 
+    constructor(message: String?, errorCode: ErrorCode?) : super(message) {
+        this.errorCode = errorCode
+    }
+
+    constructor(message: String?, errorCode: ErrorCode?, cause: Throwable?) : super(message, cause) {
+        this.errorCode = errorCode
+    }
 }
