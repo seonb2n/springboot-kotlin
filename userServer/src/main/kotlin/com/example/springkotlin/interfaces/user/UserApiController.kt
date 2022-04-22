@@ -1,7 +1,6 @@
 package com.example.springkotlin.interfaces.user
 
 import com.example.springkotlin.application.user.UserFacade
-import com.example.springkotlin.common.response.CommonResponse
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -16,7 +15,7 @@ class UserApiController {
     private lateinit var userFacade: UserFacade
 
     @PostMapping("/register")
-    fun registerUser(@RequestBody registerRequest: UserDto.RegisterRequest): CommonResponse<Any> {
+    fun registerUser(@RequestBody registerRequest: UserDto.RegisterRequest): UserDto.UserResponse {
         val userCommand = registerRequest.toCommand()
         val userInfo = userFacade.registerUser(userCommand)
         val response = UserDto.UserResponse(
@@ -25,11 +24,11 @@ class UserApiController {
             userNickName = userInfo.userNickName,
             productSet = userInfo.userProductSet
         )
-        return CommonResponse.success(response)
+        return response
     }
 
     @PostMapping("/getuser")
-    fun getUser(@RequestBody getWithIdRequest: UserDto.GetWithIdRequest): CommonResponse<Any> {
+    fun getUser(@RequestBody getWithIdRequest: UserDto.GetWithIdRequest):UserDto.UserResponse {
         val userInfo = userFacade.getUser(getWithIdRequest.userId)
         val response = UserDto.UserResponse(
             userId = userInfo.userId,
@@ -37,7 +36,7 @@ class UserApiController {
             userNickName = userInfo.userNickName,
             productSet = userInfo.userProductSet
         )
-        return CommonResponse.success(response)
+        return response
     }
 
 }
