@@ -26,18 +26,23 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
     implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation ("io.jsonwebtoken:jjwt-api:0.11.2")
+
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     implementation("com.google.guava:guava:31.1-jre")
-
     compileOnly("org.projectlombok:lombok")
     runtimeOnly("mysql:mysql-connector-java")
+    runtimeOnly("io.jsonwebtoken:jjwt-impl:0.11.2")
+    runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.11.2")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     annotationProcessor("org.projectlombok:lombok")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.security:spring-security-test")
+
 }
 
 tasks.withType<KotlinCompile> {

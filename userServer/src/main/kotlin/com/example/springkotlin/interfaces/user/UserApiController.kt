@@ -14,28 +14,10 @@ class UserApiController {
     @Autowired
     private lateinit var userFacade: UserFacade
 
-    @PostMapping("/register")
-    fun registerUser(@RequestBody registerRequest: UserDto.RegisterRequest): UserDto.UserResponse {
-        val userCommand = registerRequest.toCommand()
-        val userInfo = userFacade.registerUser(userCommand)
-        val response = UserDto.UserResponse(
-            userId = userInfo.userId,
-            userCredit = userInfo.userCredit,
-            userNickName = userInfo.userNickName,
-            productSet = userInfo.userProductSet
-        )
-        return response
-    }
-
     @PostMapping("/getuser")
     fun getUser(@RequestBody getWithIdRequest: UserDto.GetWithIdRequest):UserDto.UserResponse {
-        val userInfo = userFacade.getUser(getWithIdRequest.userId)
-        val response = UserDto.UserResponse(
-            userId = userInfo.userId,
-            userCredit = userInfo.userCredit,
-            userNickName = userInfo.userNickName,
-            productSet = userInfo.userProductSet
-        )
+        val userInfo = userFacade.getUserWithUserId(getWithIdRequest.userId)
+        val response = UserDto.UserResponse(userInfo)
         return response
     }
 
