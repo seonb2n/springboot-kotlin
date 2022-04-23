@@ -13,5 +13,6 @@ class UserInfo {
         val userNickName: String = user.nickName
         val userCredit: Int = user.credit
         val userProductSet: MutableSet<Product> = user.productSet
+        val userPassword : String = user.m_password
     }
 }

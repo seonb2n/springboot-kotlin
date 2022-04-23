@@ -13,13 +13,19 @@ class UserFacade {
     lateinit var userService: UserService
 
     fun registerUser(registerUser: UserCommand.RegisterUser): UserInfo.Main {
-        val userInfo = userService.registerUser(registerUser)
-        return userInfo
+        return userService.registerUser(registerUser)
     }
 
-    fun getUser(userId: Long): UserInfo.Main {
-        val userInfo = userService.getUserWithUserId(userId)
-        return userInfo
+    fun getUserWithUserId(userId: Long): UserInfo.Main {
+        return userService.getUserWithUserId(userId)
+    }
+
+    fun getUserWithUserNickName(userNickName: String): UserInfo.Main {
+        return userService.getUserWithUserNickName(userNickName)
+    }
+
+    fun isUserExist(userNickName: String): Boolean {
+        return userService.isUserExist(userNickName)
     }
 
 }

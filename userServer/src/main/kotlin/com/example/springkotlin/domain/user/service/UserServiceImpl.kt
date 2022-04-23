@@ -1,9 +1,13 @@
 package com.example.springkotlin.domain.user.service
 
+import com.example.springkotlin.common.UserRole
+import com.example.springkotlin.domain.user.User
 import com.example.springkotlin.domain.user.UserCommand
 import com.example.springkotlin.domain.user.UserInfo
 import lombok.extern.slf4j.Slf4j
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.security.core.userdetails.UserDetails
+import org.springframework.security.core.userdetails.UsernameNotFoundException
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -28,5 +32,18 @@ class UserServiceImpl : UserService{
     override fun getUserWithUserId(userId: Long): UserInfo.Main {
         val user = userReader.getUserWithUserId(userId)
         return UserInfo.Main(user)
+    }
+
+    override fun getUserWithUserNickName(userNickName: String): UserInfo.Main {
+        val user = userReader.getUserWithUserNickName(userNickName)
+        return UserInfo.Main(user)
+    }
+
+    override fun loadUserByUsername(username: String): UserDetails {
+        return userReader.getUserWithUserNickName(username)
+    }
+
+    override fun isUserExist(userNickName: String): Boolean {
+        return userReader.isUserExist(userNickName)
     }
 }

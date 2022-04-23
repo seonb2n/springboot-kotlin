@@ -13,11 +13,17 @@ class UserReaderImpl : UserReader{
     lateinit var userRepository: UserRepository
 
     override fun getUserWithUserId(userId: Long): User {
-        //todo 에러 처리 로직 필요
         return userRepository.getUserByUserId(userId) ?: throw RuntimeException("$userId can not found")
     }
 
     override fun getUserWithUserNickName(userNickName: String): User {
         return userRepository.getUserByNickName(userNickName) ?: throw RuntimeException("$userNickName can not found")
+    }
+
+    override fun isUserExist(userNickName: String): Boolean {
+        if(userRepository.getUserByNickName(userNickName) == null) {
+            return false
+        }
+        return true
     }
 }

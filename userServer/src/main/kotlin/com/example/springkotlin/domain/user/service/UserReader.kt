@@ -6,5 +6,5 @@ interface UserReader {
 
     fun getUserWithUserId(userId: Long) : User
     fun getUserWithUserNickName(userNickName: String) : User
-
+    fun isUserExist(userNickName: String) : Boolean
 }

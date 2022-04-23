@@ -1,18 +1,22 @@
 package com.example.springkotlin.interfaces.user
 
 import com.example.springkotlin.domain.product.Product
+import com.example.springkotlin.domain.user.User
 import com.example.springkotlin.domain.user.UserCommand
+import com.example.springkotlin.domain.user.UserInfo
 
 class UserDto {
 
-    class RegisterRequest (
+    class RegisterRequest(
         var userNickName: String,
+        var userPassword: String,
         var userCredit: Int
-            ){
+    ) {
 
         fun toCommand(): UserCommand.RegisterUser {
             return UserCommand.RegisterUser(
                 userNickName = userNickName,
+                userPassword = userPassword,
                 userCredit = userCredit
             )
         }
@@ -22,12 +26,26 @@ class UserDto {
         var userId: Long
     )
 
-    class UserResponse(
-        var userId: Long?,
+    class LoginRequest(
         var userNickName: String,
-        var userCredit: Int,
-        var productSet: MutableSet<Product>
-    ) {
+        var userPassword: String
+    )
+
+    class UserLogInResponse(userInfo: UserInfo.Main, userToken: String) {
+        var token = userToken
+        var userId: Long? = userInfo.userId
+        var userNickName: String = userInfo.userNickName
+        var userPassword: String = userInfo.userPassword
+        var userCredit: Int = userInfo.userCredit
+        var productSet: MutableSet<Product> = userInfo.userProductSet
+    }
+
+    class UserResponse(userInfo: UserInfo.Main) {
+        var userId: Long? = userInfo.userId
+        var userNickName: String = userInfo.userNickName
+        var userPassword: String = userInfo.userPassword
+        var userCredit: Int = userInfo.userCredit
+        var productSet: MutableSet<Product> = userInfo.userProductSet
     }
 
 }
