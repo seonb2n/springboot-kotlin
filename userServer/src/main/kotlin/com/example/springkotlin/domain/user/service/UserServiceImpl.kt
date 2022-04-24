@@ -1,13 +1,10 @@
 package com.example.springkotlin.domain.user.service
 
-import com.example.springkotlin.common.UserRole
-import com.example.springkotlin.domain.user.User
 import com.example.springkotlin.domain.user.UserCommand
 import com.example.springkotlin.domain.user.UserInfo
 import lombok.extern.slf4j.Slf4j
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.core.userdetails.UserDetails
-import org.springframework.security.core.userdetails.UsernameNotFoundException
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -22,7 +19,7 @@ class UserServiceImpl : UserService{
     lateinit var userStore: UserStore
 
     @Transactional
-    override fun registerUser(registerUser: UserCommand.RegisterUser): UserInfo.Main {
+    override fun registerUser(registerUser: UserCommand.UserRegisterCommand): UserInfo.Main {
         val initUser = registerUser.toEntity()
         val user = userStore.storeUser(initUser)
         return UserInfo.Main(user)

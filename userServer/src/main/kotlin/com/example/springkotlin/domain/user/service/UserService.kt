@@ -6,7 +6,7 @@ import org.springframework.security.core.userdetails.UserDetailsService
 
 interface UserService : UserDetailsService{
 
-    fun registerUser(registerUser: UserCommand.RegisterUser): UserInfo.Main
+    fun registerUser(registerUser: UserCommand.UserRegisterCommand): UserInfo.Main
 
     fun getUserWithUserId(userId: Long): UserInfo.Main
 

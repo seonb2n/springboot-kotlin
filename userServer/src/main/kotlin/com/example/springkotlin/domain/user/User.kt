@@ -1,6 +1,5 @@
 package com.example.springkotlin.domain.user
 
-import com.example.springkotlin.common.UserRole
 import com.example.springkotlin.domain.BaseEntity
 import com.example.springkotlin.domain.product.Product
 import org.springframework.security.core.GrantedAuthority

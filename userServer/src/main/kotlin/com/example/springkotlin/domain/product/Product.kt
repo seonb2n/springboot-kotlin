@@ -5,7 +5,7 @@ import com.example.springkotlin.domain.user.User
 import javax.persistence.*
 
 @Entity
-class Product (
+class Product(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val productId: Long? = null,
@@ -14,6 +14,7 @@ class Product (
     var cost: Int,
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId")
-    var user: User
+    var user: User,
+    var userId: Long?
     ) : BaseEntity() {
 }

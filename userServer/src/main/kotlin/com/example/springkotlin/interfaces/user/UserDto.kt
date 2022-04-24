@@ -1,7 +1,6 @@
 package com.example.springkotlin.interfaces.user
 
 import com.example.springkotlin.domain.product.Product
-import com.example.springkotlin.domain.user.User
 import com.example.springkotlin.domain.user.UserCommand
 import com.example.springkotlin.domain.user.UserInfo
 
@@ -13,8 +12,8 @@ class UserDto {
         var userCredit: Int
     ) {
 
-        fun toCommand(): UserCommand.RegisterUser {
-            return UserCommand.RegisterUser(
+        fun toCommand(): UserCommand.UserRegisterCommand {
+            return UserCommand.UserRegisterCommand(
                 userNickName = userNickName,
                 userPassword = userPassword,
                 userCredit = userCredit

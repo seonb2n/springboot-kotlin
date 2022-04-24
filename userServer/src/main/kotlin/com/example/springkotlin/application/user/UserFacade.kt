@@ -12,7 +12,7 @@ class UserFacade {
     @Autowired
     lateinit var userService: UserService
 
-    fun registerUser(registerUser: UserCommand.RegisterUser): UserInfo.Main {
+    fun registerUser(registerUser: UserCommand.UserRegisterCommand): UserInfo.Main {
         return userService.registerUser(registerUser)
     }
 
