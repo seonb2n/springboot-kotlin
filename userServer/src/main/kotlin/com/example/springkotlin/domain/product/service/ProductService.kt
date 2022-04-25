@@ -3,6 +3,7 @@ package com.example.springkotlin.domain.product.service
 import com.example.springkotlin.domain.product.Product
 import com.example.springkotlin.domain.product.ProductCommand
 import com.example.springkotlin.domain.product.ProductInfo
+import com.example.springkotlin.domain.user.User
 
 interface ProductService {
 
@@ -10,7 +11,7 @@ interface ProductService {
 
     fun getProductWithProductId(productId: Long): ProductInfo.Main
 
-    fun getProductWithUserId(userId: Long): MutableSet<ProductInfo.Main>
+    fun getProductWithUserId(user: User): MutableSet<ProductInfo.Main>
 
     fun deleteProductWithProductId(productId: Long)
 }

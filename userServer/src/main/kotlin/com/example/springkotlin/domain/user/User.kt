@@ -2,6 +2,7 @@ package com.example.springkotlin.domain.user
 
 import com.example.springkotlin.domain.BaseEntity
 import com.example.springkotlin.domain.product.Product
+import com.fasterxml.jackson.annotation.JsonManagedReference
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 import java.util.*
@@ -16,13 +17,10 @@ class User (
     var m_password: String,
     var credit: Int,
     @OneToMany(mappedBy = "user")
+    @JsonManagedReference
     var productSet: MutableSet<Product> = TreeSet()
     ) : BaseEntity(), UserDetails {
-
-        fun addProduct(product: Product) {
-            productSet.add(product)
-        }
-
+    
     override fun getAuthorities(): MutableCollection<out GrantedAuthority>? {
        return null
     }
