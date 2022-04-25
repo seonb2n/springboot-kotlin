@@ -19,4 +19,8 @@ class ProductFacade {
         val productId = productIdCommand.productId
           return productService.deleteProductWithProductId(productId)
     }
+
+    fun getAllProducts(): MutableSet<ProductInfo.Main> {
+        return productService.getAllProducts()
+    }
 }

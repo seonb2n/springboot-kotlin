@@ -2,6 +2,7 @@ package com.example.springkotlin.interfaces.product
 
 import com.example.springkotlin.domain.product.ProductCommand
 import com.example.springkotlin.domain.product.ProductInfo
+import java.util.*
 
 class ProductDto {
 
@@ -26,6 +27,16 @@ class ProductDto {
         val amount = productInfo.amount
         val cost = productInfo.cost
         val userId = productInfo.userId
+    }
+
+    companion object {
+        fun toProductsResponse(productInfoSet: MutableSet<ProductInfo.Main>): MutableSet<ProductResponse> {
+            val resultSet = TreeSet<ProductResponse>()
+            productInfoSet.forEach {
+                resultSet.add(ProductResponse(it))
+            }
+            return resultSet
+        }
     }
 
 }

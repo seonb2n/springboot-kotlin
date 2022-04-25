@@ -8,4 +8,6 @@ interface ProductReader {
     fun getProductWithProductId(productId: Long): Product
 
     fun getProductsWithUser(user: User): MutableSet<Product>
+
+    fun getAllProducts(): MutableSet<Product>
 }

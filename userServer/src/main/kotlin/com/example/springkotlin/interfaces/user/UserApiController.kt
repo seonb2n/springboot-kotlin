@@ -25,11 +25,4 @@ class UserApiController {
         return UserDto.UserResponse(userInfo)
     }
 
-    @PostMapping("/addProduct")
-    fun addProduct(@RequestBody addRequest: ProductDto.AddRequest): ProductDto.ProductResponse {
-        val productCommand = addRequest.toCommand()
-        val productInfo = productFacade.addProduct(productCommand)
-        return ProductDto.ProductResponse(productInfo)
-    }
-
 }

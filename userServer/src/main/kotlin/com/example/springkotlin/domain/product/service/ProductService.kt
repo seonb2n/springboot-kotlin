@@ -11,7 +11,9 @@ interface ProductService {
 
     fun getProductWithProductId(productId: Long): ProductInfo.Main
 
-    fun getProductWithUserId(user: User): MutableSet<ProductInfo.Main>
+    fun getProductWithUser(user: User): MutableSet<ProductInfo.Main>
 
     fun deleteProductWithProductId(productId: Long)
+
+    fun getAllProducts(): MutableSet<ProductInfo.Main>
 }

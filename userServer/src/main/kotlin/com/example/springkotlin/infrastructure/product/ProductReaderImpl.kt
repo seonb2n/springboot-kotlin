@@ -19,4 +19,9 @@ class ProductReaderImpl: ProductReader {
     override fun getProductsWithUser(user: User): MutableSet<Product> {
         return productRepository.findProductsByUser(user)
     }
+
+    override fun getAllProducts(): MutableSet<Product> {
+        val productList = productRepository.findAll()
+        return productList.toMutableSet()
+    }
 }
