@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 import java.util.*
 
 @Service
@@ -19,10 +20,10 @@ class ProductServiceImpl: ProductService {
     @Autowired
     lateinit var productStore: ProductStore
 
+    @Transactional
     override fun addProduct(productAddCommand: ProductCommand.ProductAddCommand): ProductInfo.Main {
         val user = SecurityContextHolder.getContext().authentication.principal as User
         val product = productAddCommand.toEntity(user)
-        user.addProduct(product)
         val productInfo = productStore.storeProduct(product)
         return ProductInfo.Main(productInfo)
     }
@@ -32,11 +33,12 @@ class ProductServiceImpl: ProductService {
         return ProductInfo.Main(product)
     }
 
-    override fun getProductWithUserId(userId: Long): MutableSet<ProductInfo.Main> {
-        val productSet = productReader.getProductsWithUserId(userId)
+    override fun getProductWithUserId(user: User): MutableSet<ProductInfo.Main> {
+        val productSet = productReader.getProductsWithUser(user)
         return ProductInfo.makeProductInfoSet(productSet)
     }
 
+    @Transactional
     override fun deleteProductWithProductId(productId: Long) {
         val product = productReader.getProductWithProductId(productId)
         return productStore.deleteProduct(product)

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service
 
 @Service
 class ProductFacade {
-
     @Autowired
     lateinit var productService: ProductService
 
@@ -20,5 +19,4 @@ class ProductFacade {
         val productId = productIdCommand.productId
           return productService.deleteProductWithProductId(productId)
     }
-
 }

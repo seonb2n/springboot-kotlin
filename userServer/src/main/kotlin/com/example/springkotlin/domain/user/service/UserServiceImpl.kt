@@ -25,7 +25,6 @@ class UserServiceImpl : UserService{
         return UserInfo.Main(user)
     }
 
-    @Transactional
     override fun getUserWithUserId(userId: Long): UserInfo.Main {
         val user = userReader.getUserWithUserId(userId)
         return UserInfo.Main(user)

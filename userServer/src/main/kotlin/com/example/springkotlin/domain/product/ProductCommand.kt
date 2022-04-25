@@ -14,8 +14,7 @@ class ProductCommand {
                 name = name,
                 amount = amount,
                 cost = cost,
-                user = user,
-                userId = user.userId
+                user = user
             )
         }
     }
