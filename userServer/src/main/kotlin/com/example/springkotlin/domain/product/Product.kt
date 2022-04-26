@@ -16,7 +16,6 @@ class Product(
     val productId: Long? = null,
     var productToken: String = TokenGenerator.randomCharacterWithPrefix(PRODUCT_PREFIX),
     val name: String,
-    var amount: Int? = 0,
     var cost: Int,
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId")

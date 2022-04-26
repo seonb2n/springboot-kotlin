@@ -30,6 +30,11 @@ class UserDto {
         var userPassword: String
     )
 
+    class UpdateUserCreditRequest(
+        val userToken: String,
+        val productToken: String
+    )
+
     class UserLogInResponse(userInfo: UserInfo.Main, jwtToken: String) {
         var jwtToken = jwtToken
         var userToken = userInfo.userToken
