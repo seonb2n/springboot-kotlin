@@ -1,4 +1,4 @@
-package com.example.springkotlin.infrastructure.product
+package com.example.springkotlin.infrastructures.product
 
 import com.example.springkotlin.domain.product.Product
 import com.example.springkotlin.domain.product.service.ProductStore

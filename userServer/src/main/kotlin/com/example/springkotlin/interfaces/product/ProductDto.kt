@@ -22,6 +22,7 @@ class ProductDto {
     }
 
     class ProductResponse(productInfo: ProductInfo.Main) {
+        val productToken = productInfo.productToken
         val productId = productInfo.productId
         val name = productInfo.name
         val amount = productInfo.amount
@@ -38,5 +39,4 @@ class ProductDto {
             return resultList
         }
     }
-
 }

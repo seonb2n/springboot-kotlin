@@ -2,7 +2,7 @@ package com.example.springkotlin
 
 import com.example.springkotlin.domain.user.UserCommand
 import com.example.springkotlin.domain.user.service.UserService
-import com.example.springkotlin.infrastructure.user.UserRepository
+import com.example.springkotlin.infrastructures.user.UserRepository
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
