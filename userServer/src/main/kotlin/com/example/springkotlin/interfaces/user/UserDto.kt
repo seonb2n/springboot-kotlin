@@ -30,8 +30,9 @@ class UserDto {
         var userPassword: String
     )
 
-    class UserLogInResponse(userInfo: UserInfo.Main, userToken: String) {
-        var token = userToken
+    class UserLogInResponse(userInfo: UserInfo.Main, jwtToken: String) {
+        var jwtToken = jwtToken
+        var userToken = userInfo.userToken
         var userId: Long? = userInfo.userId
         var userNickName: String = userInfo.userNickName
         var userPassword: String = userInfo.userPassword
@@ -40,6 +41,7 @@ class UserDto {
     }
 
     class UserResponse(userInfo: UserInfo.Main) {
+        var userToken = userInfo.userToken
         var userId: Long? = userInfo.userId
         var userNickName: String = userInfo.userNickName
         var userPassword: String = userInfo.userPassword

@@ -9,7 +9,7 @@ import javax.persistence.*
 @Entity
 class Product(
 
-    private val PRODUCT_PREFIX: String = "ord_",
+    private val PRODUCT_PREFIX: String = "prod_",
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

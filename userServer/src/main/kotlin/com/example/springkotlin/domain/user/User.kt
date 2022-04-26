@@ -1,5 +1,6 @@
 package com.example.springkotlin.domain.user
 
+import com.example.springkotlin.config.common.TokenGenerator
 import com.example.springkotlin.domain.BaseEntity
 import com.example.springkotlin.domain.product.Product
 import com.fasterxml.jackson.annotation.JsonManagedReference
@@ -10,9 +11,13 @@ import javax.persistence.*
 
 @Entity
 class User (
+
+    private val USER_PREFIX: String = "user_",
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val userId: Long? = null,
+    var userToken: String = TokenGenerator.randomCharacterWithPrefix(USER_PREFIX),
     var nickName: String,
     var m_password: String,
     var credit: Int,
