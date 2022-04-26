@@ -20,7 +20,7 @@ class ProductFacade {
           return productService.deleteProductWithProductId(productId)
     }
 
-    fun getAllProducts(): MutableSet<ProductInfo.Main> {
+    fun getAllProducts(): MutableList<ProductInfo.Main> {
         return productService.getAllProducts()
     }
 }

@@ -30,12 +30,12 @@ class ProductDto {
     }
 
     companion object {
-        fun toProductsResponse(productInfoSet: MutableSet<ProductInfo.Main>): MutableSet<ProductResponse> {
-            val resultSet = TreeSet<ProductResponse>()
-            productInfoSet.forEach {
-                resultSet.add(ProductResponse(it))
+        fun toProductsResponse(productInfoList: MutableList<ProductInfo.Main>): MutableList<ProductResponse> {
+            val resultList = mutableListOf<ProductResponse>()
+            productInfoList.forEach {
+                resultList.add(ProductResponse(it))
             }
-            return resultSet
+            return resultList
         }
     }
 

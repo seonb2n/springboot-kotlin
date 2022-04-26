@@ -9,5 +9,5 @@ interface ProductReader {
 
     fun getProductsWithUser(user: User): MutableSet<Product>
 
-    fun getAllProducts(): MutableSet<Product>
+    fun getAllProducts(): MutableList<Product>
 }

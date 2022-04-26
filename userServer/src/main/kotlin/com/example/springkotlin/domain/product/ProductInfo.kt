@@ -12,12 +12,12 @@ class ProductInfo {
     }
 
     companion object {
-        fun makeProductInfoSet(productSet: MutableSet<Product>): MutableSet<Main> {
-            val resultSet = TreeSet<Main>()
-            productSet.forEach {
-                resultSet.add(Main(it))
+        fun makeProductInfoList(productList: MutableList<Product>): MutableList<Main> {
+            var productInfoList = mutableListOf<Main>()
+            productList.forEach {
+                productInfoList.add(Main(it))
             }
-            return resultSet
+            return productInfoList
         }
     }
 

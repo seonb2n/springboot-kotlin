@@ -30,7 +30,7 @@ class SecurityConfig(private val jwtTokenProvider: JwtTokenProvider): WebSecurit
             .and()
             .authorizeRequests() // 요청에 대한 사용권한 체크
             .antMatchers("/api/**").authenticated()
-            .antMatchers("/register", "/login/**", "/logout/**").permitAll() // 로그인, 회원가입은 누구나 접근 가능
+            .antMatchers("/register", "/login/**", "/logout/**", "/getproducts").permitAll() // 로그인, 회원가입, 전체 상품 목록 보기는 누구나 접근가능
             .and()
             .addFilterBefore(JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter::class.java)
     }

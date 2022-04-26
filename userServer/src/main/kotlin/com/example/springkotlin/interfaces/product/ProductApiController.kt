@@ -12,11 +12,6 @@ class ProductApiController {
     @Autowired
     lateinit var productFacade: ProductFacade
 
-    @GetMapping("/getproducts")
-    fun getAllProducts(): MutableSet<ProductDto.ProductResponse> {
-        val productInfoSet = productFacade.getAllProducts()
-        return ProductDto.toProductsResponse(productInfoSet)
-    }
 
     @PostMapping("/addproducts")
     fun addProduct(@RequestBody addRequest: ProductDto.AddRequest): ProductDto.ProductResponse {
@@ -24,6 +19,4 @@ class ProductApiController {
         val productInfo = productFacade.addProduct(productCommand)
         return ProductDto.ProductResponse(productInfo)
     }
-
-
 }

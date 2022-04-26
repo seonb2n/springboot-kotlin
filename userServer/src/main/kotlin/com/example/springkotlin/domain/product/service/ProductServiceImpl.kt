@@ -33,14 +33,9 @@ class ProductServiceImpl: ProductService {
         return ProductInfo.Main(product)
     }
 
-    override fun getProductWithUser(user: User): MutableSet<ProductInfo.Main> {
-        val productSet = productReader.getProductsWithUser(user)
-        return ProductInfo.makeProductInfoSet(productSet)
-    }
-
-    override fun getAllProducts(): MutableSet<ProductInfo.Main> {
+    override fun getAllProducts(): MutableList<ProductInfo.Main> {
         val productSet = productReader.getAllProducts()
-        return ProductInfo.makeProductInfoSet(productSet)
+        return ProductInfo.makeProductInfoList(productSet)
     }
 
     @Transactional
