@@ -1,7 +1,8 @@
 package com.example.productserver.infrastructures.order
 
-import com.example.productserver.domain.order.Order
+import com.example.productserver.domain.order.ProductOrder
 import org.springframework.data.jpa.repository.JpaRepository
 
-interface OrderRepository: JpaRepository<Order, Long> {
+interface OrderRepository: JpaRepository<ProductOrder, Long> {
+
 }

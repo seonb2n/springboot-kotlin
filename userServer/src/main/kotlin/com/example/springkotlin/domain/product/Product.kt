@@ -9,6 +9,7 @@ import javax.persistence.*
 @Entity
 class Product(
 
+    @Transient
     private val PRODUCT_PREFIX: String = "prod_",
 
     @Id

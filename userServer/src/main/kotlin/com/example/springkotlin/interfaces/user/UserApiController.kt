@@ -26,10 +26,11 @@ class UserApiController {
     }
 
     @PostMapping("/update/credit")
-    fun updateUserCredit(@RequestBody updateUserCreditRequest: UserDto.UpdateUserCreditRequest): Boolean {
+    fun updateUserCredit(@RequestBody updateUserCreditRequest: UserDto.UpdateUserCreditRequest): UserDto.UpdateUserCreditResponse {
         val userToken = updateUserCreditRequest.userToken
         val productToken = updateUserCreditRequest.productToken
-        return userFacade.updateUserCredit(userToken, productToken)
+        val updateResult = userFacade.updateUserCredit(userToken, productToken)
+        return UserDto.UpdateUserCreditResponse(updateResult)
     }
 
 }

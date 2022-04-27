@@ -22,7 +22,8 @@ class UserTest {
     fun userCreateTest() {
         val registerUser: UserCommand.UserRegisterCommand = UserCommand.UserRegisterCommand(
             userNickName = "test-user",
-            userCredit = 3000
+            userCredit = 3000,
+            userPassword = "1234"
         )
 
         val user = userService.registerUser(registerUser)

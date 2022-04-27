@@ -8,6 +8,6 @@ import retrofit2.http.POST
 
 interface RetrofitUserApi {
 
-    @POST
-    fun updateUserCredit(@Header("authorization") jwtToken: String, @Body request: UserApiCommand.UpdateUserCredit): Call<RetrofitUserApiResponse>
+    @POST("api/v1/users/update/credit")
+    fun updateUserCredit(@Header("Authorization") jwtToken: String, @Body request: UserApiCommand.UpdateUserCredit): Call<RetrofitUserApiResponse.Update>
 }

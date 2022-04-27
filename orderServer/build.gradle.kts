@@ -30,6 +30,7 @@ dependencies {
     implementation ("com.squareup.retrofit2:converter-jackson:2.9.0")
     implementation ("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
     implementation ("com.squareup.okhttp3:logging-interceptor")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
 
     runtimeOnly("mysql:mysql-connector-java")
     implementation("com.google.guava:guava:31.1-jre")

@@ -12,6 +12,7 @@ import javax.persistence.*
 @Entity
 class User (
 
+    @Transient
     private val USER_PREFIX: String = "user_",
 
     @Id

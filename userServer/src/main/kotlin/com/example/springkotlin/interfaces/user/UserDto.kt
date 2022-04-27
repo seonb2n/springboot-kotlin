@@ -35,6 +35,10 @@ class UserDto {
         val productToken: String
     )
 
+    class UpdateUserCreditResponse(
+        val isUpdated: Boolean
+    )
+
     class UserLogInResponse(userInfo: UserInfo.Main, jwtToken: String) {
         var jwtToken = jwtToken
         var userToken = userInfo.userToken
