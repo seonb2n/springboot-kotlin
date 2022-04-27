@@ -1,4 +1,4 @@
-package com.example.springkotlin.infrastructure.product
+package com.example.springkotlin.infrastructures.product
 
 import com.example.springkotlin.domain.product.Product
 import com.example.springkotlin.domain.user.User
@@ -7,6 +7,7 @@ import java.util.*
 
 interface ProductRepository: JpaRepository<Product, Long> {
 
-    fun findProductByProductId(productId: Long): Product
+    fun findProductByProductId(productId: Long): Product?
     fun findProductsByUser(user: User): TreeSet<Product>
+    fun findProductByProductToken(productToken: String): Product?
 }

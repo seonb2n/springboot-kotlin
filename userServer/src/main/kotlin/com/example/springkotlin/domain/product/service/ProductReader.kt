@@ -10,4 +10,6 @@ interface ProductReader {
     fun getProductsWithUser(user: User): MutableSet<Product>
 
     fun getAllProducts(): MutableList<Product>
+
+    fun getProductWithProductToken(productToken: String): Product
 }

@@ -2,7 +2,7 @@ package com.example.springkotlin
 
 import com.example.springkotlin.domain.user.UserCommand
 import com.example.springkotlin.domain.user.service.UserService
-import com.example.springkotlin.infrastructure.user.UserRepository
+import com.example.springkotlin.infrastructures.user.UserRepository
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -22,7 +22,8 @@ class UserTest {
     fun userCreateTest() {
         val registerUser: UserCommand.UserRegisterCommand = UserCommand.UserRegisterCommand(
             userNickName = "test-user",
-            userCredit = 3000
+            userCredit = 3000,
+            userPassword = "1234"
         )
 
         val user = userService.registerUser(registerUser)

@@ -25,4 +25,12 @@ class UserApiController {
         return UserDto.UserResponse(userInfo)
     }
 
+    @PostMapping("/update/credit")
+    fun updateUserCredit(@RequestBody updateUserCreditRequest: UserDto.UpdateUserCreditRequest): UserDto.UpdateUserCreditResponse {
+        val userToken = updateUserCreditRequest.userToken
+        val productToken = updateUserCreditRequest.productToken
+        val updateResult = userFacade.updateUserCredit(userToken, productToken)
+        return UserDto.UpdateUserCreditResponse(updateResult)
+    }
+
 }

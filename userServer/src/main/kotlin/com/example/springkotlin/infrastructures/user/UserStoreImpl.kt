@@ -1,4 +1,4 @@
-package com.example.springkotlin.infrastructure.user
+package com.example.springkotlin.infrastructures.user
 
 import com.example.springkotlin.domain.user.User
 import com.example.springkotlin.domain.user.service.UserStore

@@ -1,4 +1,4 @@
-package com.example.springkotlin.infrastructure.user
+package com.example.springkotlin.infrastructures.user
 
 import com.example.springkotlin.domain.user.User
 import com.example.springkotlin.domain.user.service.UserReader
@@ -13,17 +13,21 @@ class UserReaderImpl : UserReader{
     lateinit var userRepository: UserRepository
 
     override fun getUserWithUserId(userId: Long): User {
-        return userRepository.getUserByUserId(userId) ?: throw RuntimeException("$userId can not found")
+        return userRepository.findUserByUserId(userId) ?: throw RuntimeException("$userId can not found")
     }
 
     override fun getUserWithUserNickName(userNickName: String): User {
-        return userRepository.getUserByNickName(userNickName) ?: throw RuntimeException("$userNickName can not found")
+        return userRepository.findUserByNickName(userNickName) ?: throw RuntimeException("$userNickName can not found")
     }
 
     override fun isUserExist(userNickName: String): Boolean {
-        if(userRepository.getUserByNickName(userNickName) == null) {
+        if(userRepository.findUserByNickName(userNickName) == null) {
             return false
         }
         return true
+    }
+
+    override fun getUserWithUserToken(userToken: String): User {
+        return userRepository.findUserByUserToken(userToken) ?: throw RuntimeException("$userToken can not found")
     }
 }

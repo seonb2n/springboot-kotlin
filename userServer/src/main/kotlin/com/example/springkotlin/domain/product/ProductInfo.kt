@@ -4,9 +4,9 @@ import java.util.*
 
 class ProductInfo {
     class Main(product: Product) {
+        val productToken = product.productToken
         val productId = product.productId
         val name = product.name
-        val amount = product.amount
         val cost = product.cost
         val userId = product.user.userId
     }

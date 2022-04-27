@@ -9,6 +9,7 @@ import com.example.springkotlin.domain.product.Product
 class UserInfo {
 
     class Main(user: User) {
+        val userToken: String = user.userToken
         val userId: Long? = user.userId
         val userNickName: String = user.nickName
         val userCredit: Int = user.credit
