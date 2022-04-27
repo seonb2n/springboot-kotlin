@@ -27,9 +27,9 @@ class UserApiController {
 
     @PostMapping("/update/credit")
     fun updateUserCredit(@RequestBody updateUserCreditRequest: UserDto.UpdateUserCreditRequest): Boolean {
-        //request 의 userToken 으로 user 를 불러온다.
-        //request 의 productToken 으로 product 소유주를 불러온다.
-        //credit 을 교환한다.
+        val userToken = updateUserCreditRequest.userToken
+        val productToken = updateUserCreditRequest.productToken
+        return userFacade.updateUserCredit(userToken, productToken)
     }
 
 }

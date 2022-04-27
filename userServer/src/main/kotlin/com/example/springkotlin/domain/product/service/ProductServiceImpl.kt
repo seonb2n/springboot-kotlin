@@ -38,6 +38,11 @@ class ProductServiceImpl: ProductService {
         return ProductInfo.makeProductInfoList(productSet)
     }
 
+    override fun getProductWithProductToken(productToken: String): ProductInfo.Main {
+        val product = productReader.getProductWithProductToken(productToken)
+        return ProductInfo.Main(product)
+    }
+
     @Transactional
     override fun deleteProductWithProductId(productId: Long) {
         val product = productReader.getProductWithProductId(productId)

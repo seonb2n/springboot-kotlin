@@ -28,4 +28,8 @@ class UserFacade {
         return userService.isUserExist(userNickName)
     }
 
+    fun updateUserCredit(userToken: String, productToken: String): Boolean {
+        return userService.updateUserCredit(userToken, productToken)
+    }
+
 }

@@ -14,4 +14,6 @@ interface ProductService {
     fun deleteProductWithProductId(productId: Long)
 
     fun getAllProducts(): MutableList<ProductInfo.Main>
+
+    fun getProductWithProductToken(productToken: String): ProductInfo.Main
 }

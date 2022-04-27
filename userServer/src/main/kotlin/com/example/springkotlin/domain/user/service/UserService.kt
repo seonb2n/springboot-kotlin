@@ -13,4 +13,6 @@ interface UserService : UserDetailsService{
     fun getUserWithUserNickName(userNickName: String): UserInfo.Main
 
     fun isUserExist(userNickName: String): Boolean
+
+    fun updateUserCredit(userToken: String, productToken: String): Boolean
 }

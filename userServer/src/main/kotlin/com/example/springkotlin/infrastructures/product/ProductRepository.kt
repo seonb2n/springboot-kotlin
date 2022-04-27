@@ -7,6 +7,7 @@ import java.util.*
 
 interface ProductRepository: JpaRepository<Product, Long> {
 
-    fun findProductByProductId(productId: Long): Product
+    fun findProductByProductId(productId: Long): Product?
     fun findProductsByUser(user: User): TreeSet<Product>
+    fun findProductByProductToken(productToken: String): Product?
 }
