@@ -22,6 +22,4 @@ class CommonJsonDeserializer {
             return props
         }
     }
-
-
 }

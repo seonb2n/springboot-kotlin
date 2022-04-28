@@ -3,6 +3,7 @@ package com.example.springkotlin.application.product
 import com.example.springkotlin.domain.product.ProductCommand
 import com.example.springkotlin.domain.product.ProductInfo
 import com.example.springkotlin.domain.product.service.ProductService
+import com.example.springkotlin.infrastructures.kafka.KafkaProducer
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
