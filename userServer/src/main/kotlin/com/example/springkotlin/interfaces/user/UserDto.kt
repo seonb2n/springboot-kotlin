@@ -32,11 +32,14 @@ class UserDto {
 
     class UpdateUserCreditRequest(
         val userToken: String,
-        val productToken: String
+        val productToken: String,
+        val orderToken: String
     )
 
     class UpdateUserCreditResponse(
-        val isUpdated: Boolean
+        val isUpdated: Boolean,
+        val productToken: String,
+        val orderToken: String
     )
 
     class UserLogInResponse(userInfo: UserInfo.Main, jwtToken: String) {

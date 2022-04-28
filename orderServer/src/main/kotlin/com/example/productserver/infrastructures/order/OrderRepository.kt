@@ -5,4 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository
 
 interface OrderRepository: JpaRepository<ProductOrder, Long> {
 
+    fun findProductOrderByProductToken(productToken: String): ProductOrder?
+
 }

@@ -34,8 +34,9 @@ class UserApiController {
     fun updateUserCredit(@RequestBody updateUserCreditRequest: UserDto.UpdateUserCreditRequest){
         val userToken = updateUserCreditRequest.userToken
         val productToken = updateUserCreditRequest.productToken
+        val orderToken = updateUserCreditRequest.orderToken
         val updateResult = userFacade.updateUserCredit(userToken, productToken)
-        val response = UserDto.UpdateUserCreditResponse(updateResult)
+        val response = UserDto.UpdateUserCreditResponse(updateResult, productToken, orderToken)
         kafkaProducer.sendMessage(response)
     }
 

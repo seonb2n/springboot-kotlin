@@ -4,7 +4,8 @@ class UserApiCommand {
 
     class UpdateUserCredit (
         val userToken: String,
-        val productToken: String
+        val productToken: String,
+        val orderToken: String
         ){
     }
 

@@ -19,5 +19,4 @@ class ProductOrder(
     var isOrderCompleted: Boolean = false
 
 ): BaseEntity() {
-
 }
