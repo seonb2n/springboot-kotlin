@@ -16,12 +16,8 @@ class UserApiCallerImpl: UserApiCaller {
     @Autowired
     lateinit var retrofitUserApi: RetrofitUserApi
 
-    override fun updateUserCredit(jwtToken: String, request: UserApiCommand.UpdateUserCredit): Boolean {
+    override fun updateUserCredit(jwtToken: String, request: UserApiCommand.UpdateUserCredit) {
         val call = retrofitUserApi.updateUserCredit(jwtToken, request)
-        var response: Response<RetrofitUserApiResponse.Update> = call.execute()
-        if(response.body()?.isUpdated == true) {
-            return true
-        }
-        return false
+        call.execute()
     }
 }

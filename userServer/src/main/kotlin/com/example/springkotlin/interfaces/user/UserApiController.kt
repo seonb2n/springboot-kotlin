@@ -2,8 +2,10 @@ package com.example.springkotlin.interfaces.user
 
 import com.example.springkotlin.application.product.ProductFacade
 import com.example.springkotlin.application.user.UserFacade
+import com.example.springkotlin.infrastructures.kafka.KafkaProducer
 import com.example.springkotlin.interfaces.product.ProductDto
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -19,6 +21,9 @@ class UserApiController {
     @Autowired
     private lateinit var productFacade: ProductFacade
 
+    @Autowired
+    private lateinit var kafkaProducer: KafkaProducer
+
     @PostMapping("/getuser")
     fun getUser(@RequestBody getWithIdRequest: UserDto.GetWithIdRequest): UserDto.UserResponse {
         val userInfo = userFacade.getUserWithUserId(getWithIdRequest.userId)
@@ -26,11 +31,13 @@ class UserApiController {
     }
 
     @PostMapping("/update/credit")
-    fun updateUserCredit(@RequestBody updateUserCreditRequest: UserDto.UpdateUserCreditRequest): UserDto.UpdateUserCreditResponse {
+    fun updateUserCredit(@RequestBody updateUserCreditRequest: UserDto.UpdateUserCreditRequest){
         val userToken = updateUserCreditRequest.userToken
         val productToken = updateUserCreditRequest.productToken
+        val orderToken = updateUserCreditRequest.orderToken
         val updateResult = userFacade.updateUserCredit(userToken, productToken)
-        return UserDto.UpdateUserCreditResponse(updateResult)
+        val response = UserDto.UpdateUserCreditResponse(updateResult, productToken, orderToken)
+        kafkaProducer.sendMessage(response)
     }
 
 }

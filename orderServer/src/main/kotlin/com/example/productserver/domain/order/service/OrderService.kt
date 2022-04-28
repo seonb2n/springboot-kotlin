@@ -7,4 +7,5 @@ interface OrderService {
 
     fun registerOrder(orderAddCommand: OrderCommand.OrderRegisterCommand): OrderInfo.Main
 
+    fun updateOrderWithOrderToken(orderToken: String, isUpdated: Boolean)
 }
