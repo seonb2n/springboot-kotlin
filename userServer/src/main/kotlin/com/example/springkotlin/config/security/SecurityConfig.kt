@@ -31,7 +31,11 @@ class SecurityConfig(private val jwtTokenProvider: JwtTokenProvider): WebSecurit
             .authorizeRequests() // 요청에 대한 사용권한 체크
             .antMatchers("/api/**").authenticated()
             .antMatchers("/register", "/login/**", "/logout/**", "/getproducts").permitAll() // 로그인, 회원가입, 전체 상품 목록 보기는 누구나 접근가능
+            //h2 인메모리에 대한 접근 권한 허용
+            .antMatchers("/h2-console/**").permitAll()
             .and()
             .addFilterBefore(JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter::class.java)
+            //h2 인메모리 접근 허용을 위한 x-frame option 제거
+            .headers().frameOptions().disable()
     }
 }

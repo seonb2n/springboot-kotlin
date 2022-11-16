@@ -1,6 +1,7 @@
 package com.example.springkotlin.domain.product
 
 import com.example.springkotlin.domain.user.User
+import com.example.springkotlin.domain.user.UserInfo
 
 class ProductCommand {
 

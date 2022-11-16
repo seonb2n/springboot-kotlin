@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference
 import javax.persistence.*
 
 @Entity
+@Table(name="products")
 class Product(
 
     @Transient

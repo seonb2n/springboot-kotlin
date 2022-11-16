@@ -10,6 +10,7 @@ import java.util.*
 import javax.persistence.*
 
 @Entity
+@Table(name="users")
 class User (
 
     @Transient

@@ -15,5 +15,9 @@ class UserInfo {
         val userCredit: Int = user.credit
         val userProductSet: MutableSet<Product> = user.productSet
         val userPassword : String = user.m_password
+
+        fun toUserEntity(): User {
+            return User(userToken, userId, userToken, userNickName, userPassword, userCredit, userProductSet)
+        }
     }
 }
