@@ -39,6 +39,9 @@ dependencies {
     // h2 db
     implementation ("com.h2database:h2")
 
+    // kotlin test
+    implementation("com.ninja-squad:springmockk:3.1.1")
+
     implementation("com.google.guava:guava:31.1-jre")
     compileOnly("org.projectlombok:lombok")
     runtimeOnly("mysql:mysql-connector-java")
