@@ -45,7 +45,7 @@ internal class ProductServiceImplTest {
         val user = User(
                 nickName = "test-nickname",
                 credit = 0,
-                m_password = "test-password"
+                userPassword = "test-password"
         )
         `when`(authentication.principal).thenReturn(user)
 
@@ -77,7 +77,7 @@ internal class ProductServiceImplTest {
         val user = User(
                 nickName = "test-nickname",
                 credit = 0,
-                m_password = "test-password"
+                userPassword = "test-password"
         )
         every { productReader.getProductWithProductId(any()) } returns Product(
                 productId = 1L,
@@ -102,7 +102,7 @@ internal class ProductServiceImplTest {
         val user = User(
                 nickName = "test-nickname",
                 credit = 0,
-                m_password = "test-password"
+                userPassword = "test-password"
         )
         val product1 = Product(
                 productId = 1L,
@@ -137,7 +137,7 @@ internal class ProductServiceImplTest {
         val user = User(
                 nickName = "test-nickname",
                 credit = 0,
-                m_password = "test-password"
+                userPassword = "test-password"
         )
         val product = Product(
                 productToken = productTestToken,
@@ -164,7 +164,7 @@ internal class ProductServiceImplTest {
         val user = User(
                 nickName = "test-nickname",
                 credit = 0,
-                m_password = "test-password"
+                userPassword = "test-password"
         )
         val product = Product(
                 productId = 1L,

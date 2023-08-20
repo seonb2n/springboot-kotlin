@@ -15,7 +15,7 @@ class UserCommand {
             return User(
                 nickName = userNickName,
                 credit = userCredit,
-                m_password = userPassword
+                    userPassword = userPassword
             )
         }
 

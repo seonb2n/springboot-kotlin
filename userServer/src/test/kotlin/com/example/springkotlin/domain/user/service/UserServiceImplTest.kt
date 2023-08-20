@@ -38,7 +38,7 @@ internal class UserServiceImplTest {
         return User(
                 userToken = userToken,
                 nickName = userName,
-                m_password = userPassword,
+                userPassword = userPassword,
                 credit = userCredit,
         )
     }

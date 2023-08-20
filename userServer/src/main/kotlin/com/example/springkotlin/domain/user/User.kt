@@ -13,17 +13,17 @@ import javax.persistence.*
 @Table(name="users")
 class User (
 
-    @Transient
+        @Transient
     private val USER_PREFIX: String = "user_",
 
-    @Id
+        @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val userId: Long? = null,
-    var userToken: String = TokenGenerator.randomCharacterWithPrefix(USER_PREFIX),
-    var nickName: String,
-    var m_password: String,
-    var credit: Int,
-    @OneToMany(mappedBy = "user")
+        var userToken: String = TokenGenerator.randomCharacterWithPrefix(USER_PREFIX),
+        var nickName: String,
+        var userPassword: String,
+        var credit: Int,
+        @OneToMany(mappedBy = "user")
     @JsonManagedReference
     var productSet: MutableSet<Product> = TreeSet()
     ) : BaseEntity(), UserDetails {
@@ -33,7 +33,7 @@ class User (
     }
 
     override fun getPassword(): String {
-        return m_password
+        return userPassword
     }
 
     override fun getUsername(): String {
