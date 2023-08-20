@@ -7,8 +7,9 @@ import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
-import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.BeforeEach
+import io.mockk.verify
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -68,7 +69,6 @@ internal class ProductServiceImplTest {
     }
 
     @DisplayName("[ProductService] 상품을 ID 로 조회한다.")
-
     @Test
     fun getProductWithProductId() {
         val testProductName = "test-product-name"
@@ -91,15 +91,77 @@ internal class ProductServiceImplTest {
         assertEquals(testProductCost, result.cost)
     }
 
+    @DisplayName("[ProductService] 모든 상품을 조회한다.")
     @Test
     fun getAllProducts() {
+        val user = User(
+                nickName = "test-nickname",
+                credit = 0,
+                m_password = "test-password"
+        )
+        val product1 = Product(
+                productId = 1L,
+                name = "test-product-name-1",
+                cost = 100,
+                user = user,
+        )
+        val product2 = Product(
+                productId = 2L,
+                name = "test-product-name-2",
+                cost = 100,
+                user = user,
+        )
+        val productList = mutableListOf(product1, product2)
+        every { productReader.getAllProducts() } returns productList
+
+        val result = productService.getAllProducts()
+
+        assertEquals(2, result.size)
+        assertNotNull(result.get(0))
+        assertNotNull(result.get(1))
     }
 
     @Test
     fun getProductWithProductToken() {
+        val productTestToken = "product_12321412412"
+        val user = User(
+                nickName = "test-nickname",
+                credit = 0,
+                m_password = "test-password"
+        )
+        val product = Product(
+                productToken = productTestToken,
+                productId = 1L,
+                name = "test-product-name",
+                cost = 100,
+                user = user,
+        )
+        every { productReader.getProductWithProductToken(productTestToken) } returns product
+
+        val result = productService.getProductWithProductToken(productTestToken)
+
+        assertNotNull(result)
+        assertEquals(1L, result.productId)
     }
 
     @Test
     fun deleteProductWithProductId() {
+        val user = User(
+                nickName = "test-nickname",
+                credit = 0,
+                m_password = "test-password"
+        )
+        val product = Product(
+                productId = 1L,
+                name = "test-product-name",
+                cost = 100,
+                user = user,
+        )
+        every { productReader.getProductWithProductId(1L) } returns product
+        every { productStore.deleteProduct(product) } returns any()
+
+        val result = productService.deleteProductWithProductId(1L)
+
+        verify { productStore.deleteProduct(product) }
     }
 }
